@@ -3,28 +3,41 @@ export default function Page() {
   return (
     <>
       <div id="opening">
-        <video
-          className="open-video"
-          id="introVideo"
-          playsInline
-          webkit-playsinline=""
-          preload="auto"
-          muted
-          poster="assets/opening-poster.jpg"
-          aria-hidden="true"
-        >
-          <source src="assets/opening.mp4" type="video/mp4" />
-        </video>
+        <div className="opening-bg-doors" aria-hidden="true">
+          <div className="royal-gate-door gate-left"></div>
+          <div className="royal-gate-door gate-right"></div>
+        </div>
         <div className="opening-shade"></div>
+
         <div className="opening-ui" id="openingUI">
-          <div className="invitation-shloka" style={{ color: '#f6d889', fontFamily: 'Cinzel, serif', fontSize: '13px', letterSpacing: '0.15em', maxWidth: '340px', lineHeight: 1.6, textShadow: '0 2px 10px rgba(0,0,0,0.7)' }}>
-            <div>卐 || Shree Ganeshay Namah || 卐</div>
-            <div style={{ fontSize: '11px', marginTop: '6px', opacity: 0.9 }}>
+          {/* Sacred Symbol & Traditional Welcome */}
+          <div className="opening-ganesh-mark">
+            <span className="gold-swastik">卐</span>
+            <span className="ganesh-text">॥ श्री गणेशाय नमः ॥</span>
+            <span className="gold-swastik">卐</span>
+          </div>
+
+          <div className="opening-royal-card">
+            <div className="opening-badge">ROYAL WEDDING INVITATION</div>
+            <div className="opening-couple-title">
+              Rohit <span>&amp;</span> Sucheta
+            </div>
+            <div className="gold-rule" style={{ margin: '14px auto 16px' }}></div>
+            
+            <div className="opening-shloka-lines">
               Vighna Haran Mangal Karan, Shri Ganpati Maharaj |<br />
               Pratham Nimantran Aapko, Pooran Keejiye Kaaj ||
             </div>
+
+            <div className="opening-date-pill">
+              DECEMBER 2026 • PATHANKOT
+            </div>
           </div>
-          <button className="open-btn" id="openBtn">Open Invitation</button>
+
+          <button className="open-btn" id="openBtn">
+            <span>Open Invitation</span>
+            <span className="btn-shine"></span>
+          </button>
         </div>
       </div>
 
@@ -100,6 +113,12 @@ export default function Page() {
             </div>
             <div className="scratch-hint">Scratch to reveal ✨</div>
             <div className="burst" id="burst"></div>
+
+            {/* Couple Name below Save the Date */}
+            <div className="save-date-couple">
+              <div className="save-date-name">Rohit &amp; Sucheta</div>
+              <div className="gold-rule" style={{ margin: '14px auto 0' }}></div>
+            </div>
           </div>
         </section>
 
@@ -292,7 +311,7 @@ export default function Page() {
                 “Your presence, blessings and love will make our celebration truly complete.”
               </div>
               <div className="orn">❦</div>
-              <div className="name" style={{ fontSize: "32px", marginBottom: "20px" }}>
+              <div className="name couple-name-stylish">
                 {"Rohit & Sucheta"}
               </div>
 
@@ -330,6 +349,124 @@ export default function Page() {
                   <a href="tel:9878841175" style={{ color: 'inherit', textDecoration: 'none' }}>📞 9878841175</a>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* INTERACTIVE WHATSAPP RSVP SECTION */}
+        <section className="section" id="rsvp-interactive" style={{ backgroundImage: "url('assets/05-dinner-stage.png')" }}>
+          <div className="content">
+            <div className="event-card editorial-card rsvp-interactive-card">
+              <div className="event-kicker">JOIN OUR CELEBRATION</div>
+              <div className="script" style={{ fontSize: 'clamp(44px, 10vw, 68px)', color: '#ffe7a0' }}>
+                Will You Attend?
+              </div>
+              <p style={{ fontSize: '15px', color: '#ffe9bd', margin: '10px auto 20px', maxWidth: '420px', lineHeight: 1.4, fontStyle: 'italic' }}>
+                Please confirm your presence so we can warmly prepare for your arrival.
+              </p>
+
+              <form id="whatsappRsvpForm" className="rsvp-form" onSubmit={(e) => {
+                e.preventDefault();
+                const name = document.getElementById('rsvpGuestName')?.value?.trim() || '';
+                const guests = document.getElementById('rsvpGuestCount')?.value || '1';
+                const attendance = document.querySelector('input[name="attendance"]:checked')?.value || 'Joyfully Attending';
+                const events = Array.from(document.querySelectorAll('input[name="events"]:checked')).map(el => el.value).join(', ') || 'All Events';
+                const message = document.getElementById('rsvpWishes')?.value?.trim() || '';
+
+                if (!name) {
+                  alert('Please enter your name.');
+                  return;
+                }
+
+                let text = `*WEDDING RSVP - ROHIT & SUCHETA*%0A%0A` +
+                           `👤 *Name:* ${encodeURIComponent(name)}%0A` +
+                           `✨ *Attendance:* ${encodeURIComponent(attendance)}%0A` +
+                           `👥 *Number of Guests:* ${encodeURIComponent(guests)}%0A` +
+                           `🎉 *Attending Functions:* ${encodeURIComponent(events)}`;
+                
+                if (message) {
+                  text += `%0A💌 *Warm Wishes:* ${encodeURIComponent(message)}`;
+                }
+
+                // Primary RSVP contact from card: 8493871572
+                const phone = '918493871572';
+                window.open(`https://api.whatsapp.com/send?phone=${phone}&text=${text}`, '_blank');
+              }}>
+                <div className="form-group">
+                  <label htmlFor="rsvpGuestName">Your Full Name *</label>
+                  <input
+                    type="text"
+                    id="rsvpGuestName"
+                    required
+                    placeholder="e.g. Rahul Sharma & Family"
+                    className="rsvp-input"
+                  />
+                </div>
+
+                <div className="form-row-grid">
+                  <div className="form-group">
+                    <label htmlFor="rsvpGuestCount">Number of Guests</label>
+                    <select id="rsvpGuestCount" className="rsvp-select">
+                      <option value="1">1 Person</option>
+                      <option value="2">2 Persons</option>
+                      <option value="3">3 Persons</option>
+                      <option value="4">4 Persons</option>
+                      <option value="5+">5+ (Family)</option>
+                    </select>
+                  </div>
+
+                  <div className="form-group">
+                    <label>Will you attend?</label>
+                    <div className="radio-pill-group">
+                      <label className="radio-pill">
+                        <input type="radio" name="attendance" value="Joyfully Attending" defaultChecked />
+                        <span>Yes, I will attend! 🎉</span>
+                      </label>
+                      <label className="radio-pill">
+                        <input type="radio" name="attendance" value="Regretfully Decline" />
+                        <span>Sorry, cannot attend</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="form-group" style={{ textAlign: 'left', marginTop: '6px' }}>
+                  <label style={{ display: 'block', marginBottom: '8px' }}>Functions you will attend:</label>
+                  <div className="events-checkbox-grid">
+                    <label className="checkbox-item">
+                      <input type="checkbox" name="events" value="Jagran (7 Dec)" defaultChecked />
+                      <span>Jagran (7 Dec)</span>
+                    </label>
+                    <label className="checkbox-item">
+                      <input type="checkbox" name="events" value="Haldi & Jaago (10 Dec)" defaultChecked />
+                      <span>Haldi &amp; Jaago (10 Dec)</span>
+                    </label>
+                    <label className="checkbox-item">
+                      <input type="checkbox" name="events" value="Shagun (11 Dec)" defaultChecked />
+                      <span>Shagun (11 Dec)</span>
+                    </label>
+                    <label className="checkbox-item">
+                      <input type="checkbox" name="events" value="Wedding Barat (12 Dec)" defaultChecked />
+                      <span>Barat (12 Dec)</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="rsvpWishes">Warm Wishes for the Couple (Optional)</label>
+                  <textarea
+                    id="rsvpWishes"
+                    rows={2}
+                    placeholder="Write a heartfelt blessing or message..."
+                    className="rsvp-textarea"
+                  ></textarea>
+                </div>
+
+                <button type="submit" className="confirm-rsvp-btn">
+                  <span className="wa-icon">💬</span>
+                  <span>Confirm RSVP on WhatsApp</span>
+                </button>
+              </form>
             </div>
           </div>
         </section>
