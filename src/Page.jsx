@@ -358,9 +358,15 @@ export default function Page() {
         <div className="made">With best compliments from Chandal Family</div>
       </footer>
 
-      <audio id="bgMusic" preload="auto" loop><source src="assets/Naane-varugiren.mp3" type="audio/mpeg" /></audio>
+      <audio id="bgMusic" preload="auto" loop>
+        <source src="assets/song.webm" type="audio/webm" />
+      </audio>
       <button id="music-control" className="music-disabled" aria-label="Turn background music on or off">
-        <span className="music-pill"><span className="music-icon">♫</span><span id="musicText">MUSIC</span><span className="music-state" id="musicState">OFF</span></span>
+        <span className="music-pill">
+          <span className="music-icon">♫</span>
+          <span id="musicText">MUSIC</span>
+          <span className="music-state" id="musicState">OFF</span>
+        </span>
       </button>
     </>
   )
