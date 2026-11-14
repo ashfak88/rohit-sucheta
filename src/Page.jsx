@@ -3,39 +3,37 @@ export default function Page() {
   return (
     <>
       <div id="opening">
-        <div className="opening-bg-doors" aria-hidden="true">
+        <div className="opening-bg-doors" id="gateDoors" aria-hidden="true">
           <div className="royal-gate-door gate-left"></div>
           <div className="royal-gate-door gate-right"></div>
         </div>
         <div className="opening-shade"></div>
 
         <div className="opening-ui" id="openingUI">
-          {/* Sacred Symbol & Traditional Welcome */}
+          {/* Sacred Ganpati Welcome in Hindi */}
           <div className="opening-ganesh-mark">
-            <span className="gold-swastik">卐</span>
-            <span className="ganesh-text">॥ श्री गणेशाय नमः ॥</span>
-            <span className="gold-swastik">卐</span>
+            <span className="ganesh-text"> श्री गणेशाय नम  </span>
           </div>
 
-          <div className="opening-royal-card">
-            <div className="opening-badge">ROYAL WEDDING INVITATION</div>
-            <div className="opening-couple-title">
-              Rohit <span>&amp;</span> Sucheta
-            </div>
-            <div className="gold-rule" style={{ margin: '14px auto 16px' }}></div>
-            
-            <div className="opening-shloka-lines">
-              Vighna Haran Mangal Karan, Shri Ganpati Maharaj |<br />
-              Pratham Nimantran Aapko, Pooran Keejiye Kaaj ||
-            </div>
 
-            <div className="opening-date-pill">
-              DECEMBER 2026 • PATHANKOT
+          {/* Couple Names Only with Clean Luxurious Typography */}
+          <div className="opening-couple-wrap">
+            <div className="opening-couple-stacked">
+              <span className="opening-name-text">Rohit</span>
+              <span className="opening-love-symbol" title="love">❤</span>
+              <span className="opening-name-text">Sucheta</span>
             </div>
           </div>
 
-          <button className="open-btn" id="openBtn">
-            <span>Open Invitation</span>
+          <button
+            className="open-btn"
+            id="openBtn"
+            onClick={() => {
+              const op = document.getElementById('opening');
+              if (op) op.classList.add('doors-open');
+            }}
+          >
+            <span className="btn-text">Open Invitation</span>
             <span className="btn-shine"></span>
           </button>
         </div>
@@ -45,7 +43,7 @@ export default function Page() {
 
       <main>
         {/* BLESSINGS & INVITATION SECTION */}
-        <section className="section" id="blessings" style={{ backgroundImage: "url('assets/06-temple-book.png')" }}>
+        <section className="section" id="blessings" style={{ backgroundImage: "linear-gradient(180deg, rgba(20, 9, 4, 0.45), rgba(20, 9, 4, 0.7)), url('assets/punjabi-grand-entry.jpg')" }}>
           <div className="content blessings-raw-content">
           
 
@@ -78,7 +76,7 @@ export default function Page() {
         </section>
 
         {/* GROOM SECTION */}
-        <section className="section" id="groom" style={{ backgroundImage: "url('assets/01-groom-vesti.png')" }}>
+        <section className="section" id="groom" style={{ backgroundImage: "url('assets/punjabi-groom-dress.jpg')" }}>
           <div className="content">
             <div className="eyebrow role-heading">Groom</div>
             <div className="name">Rohit</div>
@@ -89,7 +87,7 @@ export default function Page() {
         </section>
 
         {/* BRIDE SECTION */}
-        <section className="section" id="bride" style={{ backgroundImage: "url('assets/02-bride-saree.png')" }}>
+        <section className="section" id="bride" style={{ backgroundImage: "url('assets/punjabi-bride-dress.jpg')" }}>
           <div className="content">
             <div className="eyebrow role-heading">Bride</div>
             <div className="name">Sucheta</div>
@@ -100,7 +98,7 @@ export default function Page() {
         </section>
 
         {/* SAVE THE DATE / SCRATCH CARD */}
-        <section className="section" id="scratch">
+        <section className="section" id="scratch" style={{ backgroundImage: "url('assets/north-haveli.jpg')" }}>
           <div className="content">
             <div className="script">Save the Date</div>
             <div className="scratch-card" id="scratchCard">
@@ -125,7 +123,7 @@ export default function Page() {
         {/* GOLDEN MOMENTS / EVENTS */}
 
         {/* Monday 7th December - Lunch & Jagran */}
-        <section className="section" id="event-jagran" style={{ backgroundImage: "url('assets/03-thali-moment.png')" }}>
+        <section className="section" id="event-jagran" style={{ backgroundImage: "url('assets/north-diya.jpg')" }}>
           <div className="content">
             <div className="event-card editorial-card">
               <div className="event-kicker">GOLDEN MOMENTS</div>
@@ -173,7 +171,7 @@ export default function Page() {
         </section>
 
         {/* Thursday 10th December - Haldi & Jaago */}
-        <section className="section" id="event-haldi-jaago" style={{ backgroundImage: "url('assets/04-temple-kulam.png')" }}>
+        <section className="section" id="event-haldi-jaago" style={{ backgroundImage: "url('assets/north-marigold.jpg')" }}>
           <div className="content">
             <div className="event-card editorial-card">
               <div className="event-kicker">GOLDEN MOMENTS</div>
@@ -221,7 +219,7 @@ export default function Page() {
         </section>
 
         {/* Friday 11th December - Shagun */}
-        <section className="section" id="event-shagun" style={{ backgroundImage: "url('assets/05-dinner-stage.png')" }}>
+        <section className="section" id="event-shagun" style={{ backgroundImage: "url('assets/punjabi-shagun-stage.jpg')" }}>
           <div className="content">
             <div className="event-card editorial-card">
               <div className="event-kicker">GOLDEN MOMENTS</div>
@@ -261,7 +259,7 @@ export default function Page() {
         </section>
 
         {/* Saturday 12th December - Departure of Barat */}
-        <section className="section" id="event-barat" style={{ backgroundImage: "url('assets/04-temple-kulam.png')" }}>
+        <section className="section" id="event-barat" style={{ backgroundImage: "url('assets/north-golden-night.jpg')" }}>
           <div className="content">
             <div className="event-card editorial-card dinner-card">
               <div className="event-kicker">THE WEDDING DAY</div>
@@ -301,7 +299,7 @@ export default function Page() {
         </section>
 
         {/* MESSAGE & FAMILY DETAILS SECTION */}
-        <section className="section" id="message">
+        <section className="section" id="message" style={{ backgroundImage: "linear-gradient(180deg, rgba(20, 9, 4, 0.45), rgba(20, 9, 4, 0.7)), url('assets/punjabi-family-pavilion.jpg')" }}>
           <div className="content">
             <div className="panel">
               <div className="eyebrow">From our hearts</div>
@@ -354,14 +352,14 @@ export default function Page() {
         </section>
 
         {/* INTERACTIVE WHATSAPP RSVP SECTION */}
-        <section className="section" id="rsvp-interactive" style={{ backgroundImage: "url('assets/05-dinner-stage.png')" }}>
+        <section className="section" id="rsvp-interactive" style={{ backgroundImage: "url('assets/north-haveli.jpg')" }}>
           <div className="content">
-            <div className="event-card editorial-card rsvp-interactive-card">
+            <div className="event-card editorial-card rsvp-interactive-card" style={{ maxWidth: '440px', padding: '26px 20px' }}>
               <div className="event-kicker">JOIN OUR CELEBRATION</div>
-              <div className="script" style={{ fontSize: 'clamp(44px, 10vw, 68px)', color: '#ffe7a0' }}>
+              <div className="script" style={{ fontSize: 'clamp(36px, 8vw, 54px)', color: '#ffe7a0', margin: '4px 0 8px' }}>
                 Will You Attend?
               </div>
-              <p style={{ fontSize: '15px', color: '#ffe9bd', margin: '10px auto 20px', maxWidth: '420px', lineHeight: 1.4, fontStyle: 'italic' }}>
+              <p style={{ fontSize: '14px', color: '#ffe9bd', margin: '0 auto 16px', maxWidth: '380px', lineHeight: 1.4, fontStyle: 'italic' }}>
                 Please confirm your presence so we can warmly prepare for your arrival.
               </p>
 
@@ -369,44 +367,45 @@ export default function Page() {
                 e.preventDefault();
                 const name = document.getElementById('rsvpGuestName')?.value?.trim() || '';
                 const guests = document.getElementById('rsvpGuestCount')?.value || '1';
-                const attendance = document.querySelector('input[name="attendance"]:checked')?.value || 'Joyfully Attending';
-                const events = Array.from(document.querySelectorAll('input[name="events"]:checked')).map(el => el.value).join(', ') || 'All Events';
-                const message = document.getElementById('rsvpWishes')?.value?.trim() || '';
+                const isAttending = document.querySelector('input[name="attendance"]:checked')?.value === 'Joyfully Attending';
+                const wishes = document.getElementById('rsvpWishes')?.value?.trim() || '';
 
                 if (!name) {
                   alert('Please enter your name.');
                   return;
                 }
 
-                let text = `*WEDDING RSVP - ROHIT & SUCHETA*%0A%0A` +
-                           `👤 *Name:* ${encodeURIComponent(name)}%0A` +
-                           `✨ *Attendance:* ${encodeURIComponent(attendance)}%0A` +
-                           `👥 *Number of Guests:* ${encodeURIComponent(guests)}%0A` +
-                           `🎉 *Attending Functions:* ${encodeURIComponent(events)}`;
-                
-                if (message) {
-                  text += `%0A💌 *Warm Wishes:* ${encodeURIComponent(message)}`;
+                // Construct full clear multi-line message
+                let fullMessage = `Hi Rohit & Sucheta,\n\n` +
+                  `This is ${name}.\n\n` +
+                  (isAttending
+                    ? `I am joyfully attending your wedding celebration!\nNumber of guests: ${guests}`
+                    : `Warm congratulations! Regretfully, I will not be able to attend, but sending my heartfelt blessings.`);
+
+                if (wishes) {
+                  fullMessage += `\n\nWarm Wishes: ${wishes}`;
                 }
 
-                // Primary RSVP contact from card: 8493871572
+                const encodedText = encodeURIComponent(fullMessage);
                 const phone = '918493871572';
-                window.open(`https://api.whatsapp.com/send?phone=${phone}&text=${text}`, '_blank');
+                window.open(`https://api.whatsapp.com/send?phone=${phone}&text=${encodedText}`, '_blank');
               }}>
-                <div className="form-group">
-                  <label htmlFor="rsvpGuestName">Your Full Name *</label>
+                <div className="form-group" style={{ marginBottom: '12px' }}>
+                  <label htmlFor="rsvpGuestName" style={{ fontSize: '11px', marginBottom: '5px' }}>Your Name *</label>
                   <input
                     type="text"
                     id="rsvpGuestName"
                     required
                     placeholder="e.g. Rahul Sharma & Family"
                     className="rsvp-input"
+                    style={{ padding: '9px 12px', fontSize: '14px' }}
                   />
                 </div>
 
-                <div className="form-row-grid">
-                  <div className="form-group">
-                    <label htmlFor="rsvpGuestCount">Number of Guests</label>
-                    <select id="rsvpGuestCount" className="rsvp-select">
+                <div className="form-row-grid" style={{ marginBottom: '12px', gap: '10px' }}>
+                  <div className="form-group" style={{ marginBottom: 0 }}>
+                    <label htmlFor="rsvpGuestCount" style={{ fontSize: '11px', marginBottom: '5px' }}>Guests</label>
+                    <select id="rsvpGuestCount" className="rsvp-select" style={{ padding: '9px 10px', fontSize: '13px' }}>
                       <option value="1">1 Person</option>
                       <option value="2">2 Persons</option>
                       <option value="3">3 Persons</option>
@@ -415,54 +414,33 @@ export default function Page() {
                     </select>
                   </div>
 
-                  <div className="form-group">
-                    <label>Will you attend?</label>
-                    <div className="radio-pill-group">
-                      <label className="radio-pill">
+                  <div className="form-group" style={{ marginBottom: 0 }}>
+                    <label style={{ fontSize: '11px', marginBottom: '5px' }}>Attendance</label>
+                    <div className="radio-pill-group" style={{ gap: '4px' }}>
+                      <label className="radio-pill" style={{ padding: '5px 8px', fontSize: '12px' }}>
                         <input type="radio" name="attendance" value="Joyfully Attending" defaultChecked />
-                        <span>Yes, I will attend! 🎉</span>
+                        <span>Attending 🎉</span>
                       </label>
-                      <label className="radio-pill">
+                      <label className="radio-pill" style={{ padding: '5px 8px', fontSize: '12px' }}>
                         <input type="radio" name="attendance" value="Regretfully Decline" />
-                        <span>Sorry, cannot attend</span>
+                        <span>Cannot attend</span>
                       </label>
                     </div>
                   </div>
                 </div>
 
-                <div className="form-group" style={{ textAlign: 'left', marginTop: '6px' }}>
-                  <label style={{ display: 'block', marginBottom: '8px' }}>Functions you will attend:</label>
-                  <div className="events-checkbox-grid">
-                    <label className="checkbox-item">
-                      <input type="checkbox" name="events" value="Jagran (7 Dec)" defaultChecked />
-                      <span>Jagran (7 Dec)</span>
-                    </label>
-                    <label className="checkbox-item">
-                      <input type="checkbox" name="events" value="Haldi & Jaago (10 Dec)" defaultChecked />
-                      <span>Haldi &amp; Jaago (10 Dec)</span>
-                    </label>
-                    <label className="checkbox-item">
-                      <input type="checkbox" name="events" value="Shagun (11 Dec)" defaultChecked />
-                      <span>Shagun (11 Dec)</span>
-                    </label>
-                    <label className="checkbox-item">
-                      <input type="checkbox" name="events" value="Wedding Barat (12 Dec)" defaultChecked />
-                      <span>Barat (12 Dec)</span>
-                    </label>
-                  </div>
-                </div>
-
-                <div className="form-group">
-                  <label htmlFor="rsvpWishes">Warm Wishes for the Couple (Optional)</label>
-                  <textarea
+                <div className="form-group" style={{ marginBottom: '14px' }}>
+                  <label htmlFor="rsvpWishes" style={{ fontSize: '11px', marginBottom: '5px' }}>Warm Wishes (Optional)</label>
+                  <input
+                    type="text"
                     id="rsvpWishes"
-                    rows={2}
-                    placeholder="Write a heartfelt blessing or message..."
-                    className="rsvp-textarea"
-                  ></textarea>
+                    placeholder="Blessings or message for the couple..."
+                    className="rsvp-input"
+                    style={{ padding: '9px 12px', fontSize: '13px' }}
+                  />
                 </div>
 
-                <button type="submit" className="confirm-rsvp-btn">
+                <button type="submit" className="confirm-rsvp-btn" style={{ padding: '12px 20px', fontSize: '12px' }}>
                   <span className="wa-icon">💬</span>
                   <span>Confirm RSVP on WhatsApp</span>
                 </button>
@@ -472,7 +450,7 @@ export default function Page() {
         </section>
 
         {/* COUNTDOWN */}
-        <section className="section" id="countdown">
+        <section className="section" id="countdown" style={{ backgroundImage: "linear-gradient(180deg,rgba(30,10,3,.45),rgba(30,10,3,.75)), url('assets/punjabi-bigday-night.jpg')" }}>
           <div className="content countdown-content">
             <div className="script">The Big Day</div>
             <div className="countdown-sub">{"COUNTING DOWN TO ROHIT & SUCHETA"}</div>

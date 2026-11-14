@@ -23,22 +23,64 @@
 .royal-gate-door{
   width:50%;
   height:100%;
-  background-image:linear-gradient(rgba(18,7,3,0.72),rgba(35,14,6,0.85)), url('/assets/06-temple-book.png');
+  background-image:linear-gradient(rgba(18,7,3,0.72),rgba(35,14,6,0.85)), url('/assets/north-haveli.jpg');
   background-size:cover;
   background-position:center;
   transition:transform 1.4s cubic-bezier(0.7, 0, 0.3, 1);
 }
 .gate-left{
-  border-right:1px solid rgba(246,216,137,0.4);
+  border-right:none;
 }
 .gate-right{
-  border-left:1px solid rgba(246,216,137,0.4);
+  border-left:none;
 }
 .doors-open .gate-left{
   transform:translateX(-100%);
 }
 .doors-open .gate-right{
   transform:translateX(100%);
+}
+.opening-couple-wrap{
+  padding:20px 10px;
+  text-align:center;
+}
+.opening-couple-stacked{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:2px;
+}
+.opening-name-text{
+  font-family:'Playfair Display', serif;
+  font-size:clamp(44px, 11vw, 76px);
+  font-style:italic;
+  font-weight:700;
+  letter-spacing:0.02em;
+  line-height:1.1;
+  background:linear-gradient(180deg, #ffffff 10%, #ffeec3 55%, #e5bd68 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 4px 18px rgba(0,0,0,0.9)) drop-shadow(0 0 30px rgba(235,190,95,0.4));
+}
+.opening-love-symbol{
+  display:inline-block;
+  font-size:clamp(26px, 6vw, 38px);
+  line-height:1;
+  color:#ff4b5c;
+  background:linear-gradient(135deg, #ff6b7e 0%, #e02438 50%, #b31022 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 2px 14px rgba(255, 75, 92, 0.7)) drop-shadow(0 0 25px rgba(255, 107, 126, 0.5));
+  margin:2px 0 4px;
+  animation:heartBeat 1.8s ease-in-out infinite;
+}
+@keyframes heartBeat{
+  0%, 100%{ transform:scale(1); }
+  14%{ transform:scale(1.22); }
+  28%{ transform:scale(1); }
+  42%{ transform:scale(1.22); }
+  70%{ transform:scale(1); }
 }
 .opening-shade{
   position:absolute;
@@ -62,16 +104,22 @@
   display:flex;
   align-items:center;
   justify-content:center;
-  gap:10px;
-  color:#f6d889;
-  font-family:'Cinzel',serif;
-  font-size:clamp(12px,3vw,15px);
-  letter-spacing:.18em;
-  text-shadow:0 2px 10px rgba(0,0,0,0.8);
+  gap:12px;
+  color:#fbd888;
+  font-family:'Cinzel', serif;
+  font-size:clamp(14px, 3.8vw, 18px);
+  letter-spacing:.15em;
+  text-shadow:0 2px 14px rgba(0,0,0,0.9), 0 0 25px rgba(251,216,136,0.45);
+  margin-bottom:-10px;
 }
 .gold-swastik{
-  color:#f28522;
-  font-size:1.2em;
+  color:#ff9838;
+  font-size:1.25em;
+  filter:drop-shadow(0 2px 8px rgba(255, 152, 56, 0.6));
+}
+.ganesh-text{
+  font-weight:600;
+  letter-spacing:0.08em;
 }
 .opening-royal-card{
   width:min(90vw,460px);
@@ -121,33 +169,52 @@
 .open-btn{
   position:relative;
   overflow:hidden;
-  border:1px solid rgba(255,221,135,.95);
-  background:linear-gradient(135deg,#a46e1d,#f7d278,#a26a1b);
-  color:#fff9e8;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:240px;
   padding:16px 48px;
   border-radius:999px;
-  letter-spacing:.22em;
+  border:1px solid rgba(255, 235, 190, 0.28);
+  background:linear-gradient(135deg, rgba(38, 16, 7, 0.94) 0%, rgba(70, 28, 12, 0.96) 50%, rgba(35, 14, 6, 0.94) 100%);
+  color:#fff3d0;
+  font-family:'Cinzel', serif;
+  font-size:clamp(12px, 3.2vw, 15px);
+  font-weight:700;
+  letter-spacing:.26em;
   text-transform:uppercase;
-  font-family:'Cinzel',serif;
-  font-size:clamp(13px,3vw,15px);
-  font-weight:600;
-  box-shadow:0 0 0 1px rgba(255,255,255,.2) inset,0 10px 40px rgba(0,0,0,.65),0 0 35px rgba(225,180,69,.55);
   cursor:pointer;
-  animation:goldPulse 2s infinite;
-  transition:transform .25s ease;
+  box-shadow:0 12px 35px rgba(0, 0, 0, 0.85);
+  transition:all .3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  backdrop-filter:blur(8px);
 }
 .open-btn:hover{
-  transform:translateY(-2px);
+  transform:translateY(-3px) scale(1.02);
+  border-color:rgba(255, 245, 215, 0.55);
+  color:#ffffff;
+  box-shadow:0 18px 45px rgba(0, 0, 0, 0.9);
+}
+.open-btn:active{
+  transform:translateY(1px) scale(0.98);
+}
+.btn-text{
+  position:relative;
+  z-index:2;
+  background:linear-gradient(180deg, #ffffff 20%, #ffe9bd 70%, #f3c968 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 2px 4px rgba(0,0,0,0.8));
 }
 .btn-shine{
   position:absolute;
   top:-50%;
   left:-60%;
-  width:40%;
+  width:35%;
   height:200%;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.4),transparent);
+  background:linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), rgba(255, 235, 180, 0.5), transparent);
   transform:rotate(25deg);
-  animation:btnShine 3s infinite;
+  animation:btnShine 3.5s infinite;
+  pointer-events:none;
 }
 @keyframes btnShine{
   0%,20%{left:-60%}
@@ -172,7 +239,7 @@ main{position:relative}.section{min-height:100svh;position:relative;display:grid
 #scratch .content{padding-top:70px;padding-bottom:70px}.scratch-card{width:min(78vw,360px);height:235px;border-radius:18px}.scratch-under .date{font-size:23px}.scratch-under .day{font-size:21px}.scratch-kicker{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.25em;color:#704111;margin-bottom:12px}.scratch-hint{font-size:14px}.scratch-canvas{cursor:grab}.scratch-canvas:active{cursor:grabbing}
 .event-card{width:min(92vw,650px);padding:26px 22px 28px;border:1px solid rgba(255,224,151,.58);border-radius:30px;background:linear-gradient(145deg,rgba(43,17,9,.68),rgba(91,39,18,.48));box-shadow:0 22px 70px rgba(0,0,0,.42),inset 0 0 30px rgba(255,214,123,.04);backdrop-filter:blur(5px)}.event-title{font-family:'Cinzel',serif;letter-spacing:.3em;font-size:12px;color:#f7dc9c;text-align:center;margin-bottom:18px}.event-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.event-item{min-height:112px;padding:16px 12px;border:1px solid rgba(246,216,137,.28);border-radius:18px;background:rgba(255,246,215,.055);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}.event-icon{font-size:22px;color:#f7d985;margin-bottom:6px}.event-item b{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.2em;color:#e9ca7d;margin-bottom:6px}.event-item strong{font-family:'Cinzel',serif;font-size:14px;line-height:1.25;color:#fff3d0}.venue-item strong{font-size:12px}.event-card .location{font-size:17px;margin:18px auto}.map-btn{background:linear-gradient(135deg,rgba(117,50,19,.9),rgba(70,26,12,.95));border-color:#f4d27f;padding:13px 24px}.map-symbol{font-size:17px}
 #gallery .content{width:min(96vw,760px)}.gallery-wrap{width:min(94vw,620px)}.gallery{align-items:center}.gallery-slide{display:flex;justify-content:center;align-items:center;height:min(67svh,650px);padding:0 24px}.gallery-slide img{width:auto;max-width:100%;height:auto;max-height:100%;aspect-ratio:auto;object-fit:contain;border-radius:20px}.gallery-nav{inset:50% 0 auto 0}.swipe-hint{margin-top:12px}
-#countdown{background-image:linear-gradient(180deg,rgba(30,10,3,.28),rgba(30,10,3,.64)),url('/assets/04-temple-kulam.png')}.countdown-content{padding-top:60px;padding-bottom:80px}.countdown-sub{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.18em;color:#f7dda1;margin:18px 0}.countdown-box{width:min(94vw,620px);margin:22px auto 20px;display:flex;align-items:stretch;justify-content:center;padding:16px 10px;border:1px solid rgba(248,219,143,.62);border-radius:22px;background:rgba(35,14,7,.58);backdrop-filter:blur(5px);box-shadow:0 14px 45px rgba(0,0,0,.35)}.count-unit{min-width:72px;display:flex;flex-direction:column;align-items:center;justify-content:center}.count-unit strong{font-family:'Cinzel',serif;font-size:clamp(25px,7vw,42px);color:#fff1bd;line-height:1}.count-unit span{font-family:'Cinzel',serif;font-size:8px;letter-spacing:.18em;color:#e6c776;margin-top:8px}.count-sep{font-family:'Cinzel',serif;font-size:28px;color:#f1d487;display:flex;align-items:center}.countdown-art{position:relative;width:min(94vw,520px);margin:10px auto 0;min-height:330px;display:flex;align-items:flex-end;justify-content:center}.countdown-couple{display:block;width:min(92vw,500px);max-height:52svh;object-fit:contain;filter:drop-shadow(0 14px 25px rgba(0,0,0,.45));position:relative;z-index:3}.rose-shower{position:absolute;inset:0 0 auto;height:230px;z-index:4;pointer-events:none;overflow:hidden}.rose-petal{position:absolute;top:-30px;opacity:.95;filter:drop-shadow(0 2px 3px rgba(0,0,0,.25));animation:roseFall linear forwards}.rose-petal::before{content:'✿';font-size:inherit}@keyframes roseFall{0%{transform:translate3d(0,-30px,0) rotate(0deg);opacity:0}10%{opacity:1}100%{transform:translate3d(var(--dx),260px,0) rotate(var(--rot));opacity:.15}}
+#countdown{background-image:linear-gradient(180deg,rgba(30,10,3,.55),rgba(30,10,3,.82)),url('/assets/north-golden-night.jpg')}.countdown-content{padding-top:60px;padding-bottom:80px}.countdown-sub{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.18em;color:#f7dda1;margin:18px 0}.countdown-box{width:min(94vw,620px);margin:22px auto 20px;display:flex;align-items:stretch;justify-content:center;padding:16px 10px;border:1px solid rgba(248,219,143,.62);border-radius:22px;background:rgba(35,14,7,.58);backdrop-filter:blur(5px);box-shadow:0 14px 45px rgba(0,0,0,.35)}.count-unit{min-width:72px;display:flex;flex-direction:column;align-items:center;justify-content:center}.count-unit strong{font-family:'Cinzel',serif;font-size:clamp(25px,7vw,42px);color:#fff1bd;line-height:1}.count-unit span{font-family:'Cinzel',serif;font-size:8px;letter-spacing:.18em;color:#e6c776;margin-top:8px}.count-sep{font-family:'Cinzel',serif;font-size:28px;color:#f1d487;display:flex;align-items:center}.countdown-art{position:relative;width:min(94vw,520px);margin:10px auto 0;min-height:330px;display:flex;align-items:flex-end;justify-content:center}.countdown-couple{display:block;width:min(92vw,500px);max-height:52svh;object-fit:contain;filter:drop-shadow(0 14px 25px rgba(0,0,0,.45));position:relative;z-index:3}.rose-shower{position:absolute;inset:0 0 auto;height:230px;z-index:4;pointer-events:none;overflow:hidden}.rose-petal{position:absolute;top:-30px;opacity:.95;filter:drop-shadow(0 2px 3px rgba(0,0,0,.25));animation:roseFall linear forwards}.rose-petal::before{content:'✿';font-size:inherit}@keyframes roseFall{0%{transform:translate3d(0,-30px,0) rotate(0deg);opacity:0}10%{opacity:1}100%{transform:translate3d(var(--dx),260px,0) rotate(var(--rot));opacity:.15}}
 #music-control{position:fixed;right:14px;left:auto;bottom:14px;transform:none;z-index:700;width:min(92vw,300px);height:205px;padding:0;border:0;background:none;box-shadow:none;backdrop-filter:none;display:block;cursor:pointer}.music-art{position:absolute;left:40px;bottom:47px;width:156px;height:184px;display:flex;align-items:flex-end;justify-content:center;z-index:3}.music-art img{width:100%;height:100%;object-fit:contain;object-position:center bottom;filter:drop-shadow(0 7px 8px rgba(0,0,0,.35));pointer-events:none}.music-pill{position:absolute;right:0;bottom:0;width:242px;height:68px;border-radius:999px;border:1px solid rgba(238,202,111,.88);background:linear-gradient(135deg,rgba(46,18,10,.97),rgba(84,34,17,.95));display:flex;align-items:center;justify-content:flex-end;gap:9px;padding:0 18px 0 70px;color:#fff0c6;box-shadow:0 12px 40px rgba(0,0,0,.45),0 0 22px rgba(224,177,65,.16);font-family:'Cinzel',serif;letter-spacing:.14em}.music-icon{font-size:21px}.music-state{font-size:8px;letter-spacing:.12em;opacity:.75}.music-disabled .music-pill{opacity:.96}.countdown-frame{position:relative;width:min(92vw,500px);border:2px solid rgba(238,202,111,.95);border-radius:30px;padding:5px;background:rgba(31,14,8,.22);box-shadow:0 0 24px rgba(224,177,65,.2);overflow:hidden;z-index:3}.countdown-frame .countdown-couple{width:100%;max-height:52svh;border-radius:24px;display:block}.relation{margin-top:12px;font-size:clamp(15px,3.5vw,20px);letter-spacing:.04em;color:#ffe8bd;text-shadow:0 2px 10px rgba(0,0,0,.45);max-width:90vw}.eyebrow{text-transform:uppercase;letter-spacing:.32em;font-size:12px;color:#f6d889;margin-bottom:8px}@media(max-width:600px){#music-control{right:6px;bottom:8px;width:calc(100vw - 12px);max-width:300px;height:190px}.music-art{left:30px;bottom:45px;width:145px;height:172px}.music-pill{width:min(235px,82vw);height:62px;padding-right:14px;padding-left:62px;font-size:10px}.music-icon{font-size:19px}.music-state{font-size:7px}.countdown-box{padding:13px 4px}.count-unit{min-width:59px}.countdown-art{min-height:285px}.countdown-frame{width:min(92vw,430px);border-radius:24px;padding:4px}.countdown-frame .countdown-couple{max-height:48svh;border-radius:19px}.rose-shower{height:190px}.event-grid{gap:8px}.event-item{min-height:105px}.venue-item{grid-column:1/-1}.gallery-slide{height:62svh;padding:0 20px}.relation{line-height:1.45}}
 
 /* Latest mobile alignment + elegant refinements */
