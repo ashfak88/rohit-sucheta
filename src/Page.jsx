@@ -387,7 +387,7 @@ export default function Page() {
                 }
 
                 const encodedText = encodeURIComponent(fullMessage);
-                const phone = '918493871572';
+                const phone = '917837507117';
                 window.open(`https://api.whatsapp.com/send?phone=${phone}&text=${encodedText}`, '_blank');
               }}>
                 <div className="form-group" style={{ marginBottom: '12px' }}>
