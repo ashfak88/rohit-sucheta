@@ -31,6 +31,16 @@ export default function Page() {
             onClick={() => {
               const op = document.getElementById('opening');
               if (op) op.classList.add('doors-open');
+              const bg = document.getElementById('bgMusic');
+              if (bg && bg.paused) {
+                bg.currentTime = 0;
+                bg.play().then(() => {
+                  const ms = document.getElementById('musicState');
+                  if (ms) ms.textContent = 'ON';
+                  const mc = document.getElementById('music-control');
+                  if (mc) mc.classList.remove('music-disabled');
+                }).catch(() => {});
+              }
             }}
           >
             <span className="btn-text">Open Invitation</span>
@@ -318,8 +328,8 @@ export default function Page() {
                 <div style={{ fontFamily: 'Cinzel, serif', fontSize: '11px', letterSpacing: '0.22em', color: '#f7d985', textTransform: 'uppercase', marginBottom: '8px' }}>
                   Family Flowers
                 </div>
-                <div style={{ fontSize: '18px', color: '#fff1cd', fontStyle: 'italic' }}>
-                  Amira, Aviraj, Himanshi, Samaira, Samiley
+                <div style={{ fontSize: '18px', color: '#fff1cd', fontStyle: 'italic', letterSpacing: '0.04em' }}>
+                  Amaira, Aviraj, Himanshi, Smaira, Smily
                 </div>
               </div>
 
@@ -473,7 +483,8 @@ export default function Page() {
         <div className="made">With best compliments from Chandal Family</div>
       </footer>
 
-      <audio id="bgMusic" preload="auto" loop>
+      <audio id="bgMusic" preload="auto" loop playsInline>
+        <source src="assets/song.mp3" type="audio/mpeg" />
         <source src="assets/song.webm" type="audio/webm" />
       </audio>
       <button id="music-control" className="music-disabled" aria-label="Turn background music on or off">
