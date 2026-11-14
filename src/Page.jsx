@@ -28,18 +28,25 @@ export default function Page() {
           <button
             className="open-btn"
             id="openBtn"
-            onClick={() => {
+            onClick={(e) => {
+              e.stopPropagation();
               const op = document.getElementById('opening');
               if (op) op.classList.add('doors-open');
+              
               const bg = document.getElementById('bgMusic');
-              if (bg && bg.paused) {
+              if (bg) {
                 bg.currentTime = 0;
-                bg.play().then(() => {
-                  const ms = document.getElementById('musicState');
-                  if (ms) ms.textContent = 'ON';
-                  const mc = document.getElementById('music-control');
-                  if (mc) mc.classList.remove('music-disabled');
-                }).catch(() => {});
+                const playPromise = bg.play();
+                if (playPromise !== undefined) {
+                  playPromise.then(() => {
+                    const ms = document.getElementById('musicState');
+                    if (ms) ms.textContent = 'ON';
+                    const mc = document.getElementById('music-control');
+                    if (mc) mc.classList.remove('music-disabled');
+                  }).catch((err) => {
+                    console.warn('Audio play on click was blocked:', err);
+                  });
+                }
               }
             }}
           >
@@ -484,8 +491,9 @@ export default function Page() {
       </footer>
 
       <audio id="bgMusic" preload="auto" loop playsInline>
-        <source src="assets/song.mp3" type="audio/mpeg" />
+        <source src="assets/song.m4a" type="audio/mp4" />
         <source src="assets/song.webm" type="audio/webm" />
+        <source src="assets/song.mp3" type="audio/mpeg" />
       </audio>
       <button id="music-control" className="music-disabled" aria-label="Turn background music on or off">
         <span className="music-pill">
