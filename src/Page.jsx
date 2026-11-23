@@ -336,7 +336,7 @@ export default function Page() {
                   Family Flowers
                 </div>
                 <div style={{ fontSize: '18px', color: '#fff1cd', fontStyle: 'italic', letterSpacing: '0.04em' }}>
-                  Amaira, Aviraj, Himanshi, Smaira, Smily
+                  Amaira, Aviraj, Himanshi, Prishu, Smaira, Smily
                 </div>
               </div>
 
